@@ -1,4 +1,4 @@
-from loading import LoadingAnimation
+from linux_system_simulator.utils.loading import LoadingAnimation
 
 
 class Repository:
@@ -16,7 +16,7 @@ class Repository:
     - InstallPackage(): Instala um pacote do repositório.
     - UninstallPackage(): Desinstala um pacote do repositório.
     """
-    
+
     def __init__(self, reponame, address):
         """
         Construtor da classe Repository.
@@ -38,7 +38,7 @@ class Repository:
         Parâmetros:
         - Nenhum.
         """
-        
+
         print(f"Endereço: {self.address}\nBaixando pacotes do repositório {self.reponame}", end='')
         LoadingAnimation(1)
         print("\n")
@@ -79,7 +79,7 @@ class Repository:
     def UninstallPackage(self, package_name):
         """
         Desinstala um pacote pelo nome, se existir e estiver instalado
-        
+
         Parâmetros:
         - package_name (str): Nome do pacote a ser desinstalado.
         """
@@ -89,4 +89,3 @@ class Repository:
             package.uninstall()
         else:
             print(f"Pacote '{package_name}' não encontrado no repositório {self.reponame}.")
-

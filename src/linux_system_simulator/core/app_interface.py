@@ -1,7 +1,7 @@
-from loading import LoadingAnimation
-from refresh import Refresh
-from application import *
-from hardware import *
+from linux_system_simulator.utils.loading import LoadingAnimation
+from linux_system_simulator.utils.refresh import Refresh
+from linux_system_simulator.core.application import Application
+from linux_system_simulator.core.hardware import Hardware
 
 
 class ApplicationInterface:
@@ -29,7 +29,7 @@ class ApplicationInterface:
         Parâmetros:
         - hardware (Hardware): objeto da classe Hardware representando o hardware do sistema
         """
-        
+
         self.refresh = Refresh()
         self.installed_apps = []
         self.running_apps = []
@@ -71,7 +71,7 @@ class ApplicationInterface:
             LoadingAnimation(1)
             self.installed_apps.remove(app)
             print(f"\nAplicativo '{app_name}' removido com sucesso!")
-        
+
 
     def StartApplication(self, app_index):
         """
@@ -80,12 +80,12 @@ class ApplicationInterface:
         Parâmetros:
         - app_index: índice do aplicativo na lista de aplicativos instalados
         """
-        
+
         app_name = self.installed_apps[app_index].name
         app_version = self.installed_apps[app_index].version
         app = next((app for app in self.installed_apps if app.name == app_name), None)
         if app is None:
-            print(f"O aplicativo '{app_name}' não foi encontrado.")        
+            print(f"O aplicativo '{app_name}' não foi encontrado.")
         elif app.permissions["Execução"] == False:
             print(f"O aplicativo '{app_name}' não possui permissão de execução.")
             return
@@ -161,4 +161,3 @@ class ApplicationInterface:
                     print("Opção inválida. Tente novamente.")
             else:
                 print("Opção inválida. Tente novamente.")
-

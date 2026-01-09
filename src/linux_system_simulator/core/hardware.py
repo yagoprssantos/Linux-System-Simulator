@@ -1,9 +1,9 @@
 import random
 
-from loading import LoadingAnimation
-from kernel import LinuxKernelAPI
-from machine import Machine
-from refresh import Refresh
+from linux_system_simulator.utils.loading import LoadingAnimation
+from linux_system_simulator.core.kernel import LinuxKernelAPI
+from linux_system_simulator.core.machine import Machine
+from linux_system_simulator.utils.refresh import Refresh
 
 
 class Hardware(Machine):
@@ -62,9 +62,9 @@ class Hardware(Machine):
         print("Verificando integridade dos componentes de hardware", end='')
         LoadingAnimation(1)
         self.kernel.InteractWithKernel()
-        health_list = ["Péssimo", "Ruim", "Ok", "Bom", "Ótimo"] 
+        health_list = ["Péssimo", "Ruim", "Ok", "Bom", "Ótimo"]
         print(f"Saúde do hardware: {random.choice(health_list)}!")
-        
+
 
     def MonitorCPU(self, running_apps):
         """
@@ -79,16 +79,16 @@ class Hardware(Machine):
         LoadingAnimation(1)
         self.kernel.InteractWithKernel()
         if len(running_apps) == 0:
-            self.cpu_usage = random.randint(28, 36) 
+            self.cpu_usage = random.randint(28, 36)
         else:
             self.cpu_usage = min(50 + 10 * (len(running_apps) - 1), 100)  # CPU aumenta com base no número de aplicativos em execução.
         print(f"Uso da CPU: {self.cpu_usage}%")
-        
+
 
     def ShowMemoryAllocations(self):
         """
         Mostra as memórias alocadas e seus endereços.
-        
+
         Parâmetros:
         - Nenhum.
         """
@@ -106,7 +106,7 @@ class Hardware(Machine):
         Parâmetros:
         - app_name (str): nome do aplicativo
         """
-        
+
         if app_name not in self.memory_allocations:
             memory_address = "0x" + ''.join(random.choice('0123456789ABCDEF') for _ in range(8))
             self.memory_allocations[app_name] = memory_address
@@ -128,4 +128,3 @@ class Hardware(Machine):
             print(f"Memória liberada de '{app_name}'")
         else:
             print(f"Não há alocação de memória para '{app_name}'")
-

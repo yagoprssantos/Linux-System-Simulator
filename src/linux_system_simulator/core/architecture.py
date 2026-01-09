@@ -1,5 +1,5 @@
 
-from loading import LoadingAnimation
+from linux_system_simulator.utils.loading import LoadingAnimation
 
 class SoftwareArchitecture:
     """

@@ -1,7 +1,7 @@
-from refresh import Refresh
-from hardware import Hardware
-from server import Server
-from architecture import SoftwareArchitecture
+from linux_system_simulator.utils.refresh import Refresh
+from linux_system_simulator.core.hardware import Hardware
+from linux_system_simulator.core.server import Server
+from linux_system_simulator.core.architecture import SoftwareArchitecture
 
 
 class List:
@@ -22,11 +22,11 @@ class List:
     - ArchitectureInfo: mostra informações sobre a arquitetura de software do sistema
     - InstalledApps: mostra os aplicativos instalados no sistema
     """
-    
+
     def __init__(self):
         """
         Construtor da classe List.
-        
+
         Parâmetros:
         - Nenhum.
 
@@ -41,7 +41,7 @@ class List:
         Parâmetros:
         - hardware (Hardware): objeto da classe Hardware representando o hardware do sistema
         """
-        
+
         self.refresh.Fresh()
         self.hardware = hardware
 
@@ -97,7 +97,7 @@ class List:
             print(f"- {integration}")
         if input("\nPressione Enter para voltar ao menu...") == '':
             return
-        
+
 
     def InstalledApps(self, installed_apps):
         """
@@ -110,7 +110,6 @@ class List:
         self.refresh.Fresh()
         self.installed_apps = installed_apps
 
-        
+
         for index, app in enumerate(self.installed_apps):
             print(f"{index + 1}. {app.name} (Versão: {app.version}, {'Em execução' if app.running else 'Parado'})")
-

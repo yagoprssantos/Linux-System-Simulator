@@ -1,0 +1,8 @@
+# Linux System Simulator - Requisitos
+# Não há dependências externas necessárias
+# O projeto usa apenas a biblioteca padrão do Python 3.6+
+
+# Para desenvolvimento (opcional):
+# pylint>=2.0.0
+# black>=21.0
+# pytest>=6.0.0

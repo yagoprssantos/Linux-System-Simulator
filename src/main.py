@@ -1,6 +1,14 @@
-from loading import *
-from menus import *
-from list import *
+from linux_system_simulator.utils.loading import LoadingAnimation
+from linux_system_simulator.ui.menus import MainMenu, HardwareMenu, AppMenu, RepositoryMenu, InfoMenu
+from linux_system_simulator.utils.list import List
+from linux_system_simulator.utils.refresh import Refresh
+from linux_system_simulator.core.hardware import Hardware
+from linux_system_simulator.core.architecture import SoftwareArchitecture
+from linux_system_simulator.core.server import Server
+from linux_system_simulator.core.app_interface import ApplicationInterface
+from linux_system_simulator.core.kernel import LinuxKernel, LinuxKernelAPI
+from linux_system_simulator.core.linux_os import LinuxOperatingSystem
+from linux_system_simulator.core.machine import Machine
 
 
 """
@@ -40,7 +48,7 @@ do sistema operacional Linux, como classes, objetos, herança, polimorfismo e en
 experiência de usuário fictícia, ou seja, não é possível instalar aplicativos reais ou acessar]
 repositórios reais. Então não se preocupe, você não irá quebrar nada!
 
-Agradeço por ler até aqui e explorar este simulador interativo de sistema operacional! 
+Agradeço por ler até aqui e explorar este simulador interativo de sistema operacional!
 
 Para acessar o código fonte deste projeto, visite o repositório no GitHub:
 [https://github.com/yagoprssantos/Linux-System-Simulator]
@@ -63,23 +71,23 @@ class Output:
         self.kernel_api = LinuxKernelAPI()
 
     def Run(self):
-         
+
         self.refresh.Fresh()
 
         self.linuxOS.DefaultRepo()
         defaultRepo =  [self.linuxOS.repositories[0], self.linuxOS.repositories[1]]
         self.linuxOS.InstallDistro("Debian", defaultRepo)
-        
+
         self.linuxOS.StartSystem()
 
         self.kernel_api.InteractWithKernel()
 
         self.architecture.DefineComponents()
         self.architecture.DefineIntegrations()
-        
+
         self.server.InitializeServer()
         self.server.AddMachine(self.machine)
-        
+
 
         while True:
             choice = MainMenu().DisplayMenu()
@@ -100,4 +108,3 @@ class Output:
 
 if __name__ == "__main__":
     Output().Run()
-

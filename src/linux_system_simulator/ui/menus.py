@@ -1,12 +1,12 @@
 import os
 
-from appInterface import *
-from linuxOS import *
-from machine import *
-from list import List
-from refresh import *
-from server import *
-from repository import Repository
+from linux_system_simulator.core.app_interface import ApplicationInterface
+from linux_system_simulator.core.linux_os import LinuxOperatingSystem
+from linux_system_simulator.core.machine import Machine
+from linux_system_simulator.utils.list import List
+from linux_system_simulator.utils.refresh import Refresh
+from linux_system_simulator.core.server import Server
+from linux_system_simulator.core.repository import Repository
 
 """
 Este arquivo existe excepcionalmente para organizar o código.
@@ -22,7 +22,7 @@ class MainMenu:
     Métodos:
     - DisplayMenu: mostra o menu principal do sistema
     """
-    
+
     def __init__(self):
         """
         Construtor da classe MainMenu.
@@ -30,7 +30,7 @@ class MainMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         self.refresh = Refresh()
 
 
@@ -41,7 +41,7 @@ class MainMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         self.refresh.Fresh()
         print("\nMenu Principal:")
         print("1. Analisar Hardware")
@@ -63,7 +63,7 @@ class HardwareMenu:
     Métodos:
     - DisplayMenu: mostra o menu de hardware do sistema
     """
-    
+
     def __init__(self, hardware, app_interface):
         """
         Construtor da classe HardwareMenu.
@@ -72,7 +72,7 @@ class HardwareMenu:
         - hardware (Hardware): objeto da classe Hardware representando o hardware do sistema
         - app_interface (ApplicationInterface): objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
         """
-        
+
         self.refresh = Refresh()
         self.hardware = hardware
         self.app_interface = app_interface
@@ -85,7 +85,7 @@ class HardwareMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         while True:
             self.refresh.Fresh()
             print("\nMenu de Hardware:")
@@ -106,13 +106,13 @@ class HardwareMenu:
             elif choice == 4:
                 break
             else:
-                print("Opção inválida. Tente novamente.")                
+                print("Opção inválida. Tente novamente.")
 
 
 class MemoryMenu:
     """
     Classe que representa o menu de gerenciamento de memória do sistema.
-    
+
     Atributos:
     - hardware: objeto da classe Hardware representando o hardware do sistema
     - app_interface: objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
@@ -120,7 +120,7 @@ class MemoryMenu:
     Métodos:
     - DisplayMenu: mostra o menu de gerenciamento de memória do sistema
     """
-    
+
     def __init__(self, hardware, app_interface):
         """
         Construtor da classe MemoryMenu.
@@ -129,7 +129,7 @@ class MemoryMenu:
         - hardware (Hardware): objeto da classe Hardware representando o hardware do sistema
         - app_interface (ApplicationInterface): objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
         """
-        
+
         self.refresh = Refresh()
         self.list = List()
         self.hardware = hardware
@@ -179,11 +179,11 @@ class AppMenu:
 
     Atributos:
     - app_interface: objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
-    
+
     Métodos:
     - DisplayMenu: mostra o menu de aplicativos do sistema
     """
-    
+
     def __init__(self, app_interface):
         """
         Construtor da classe AppMenu.
@@ -191,7 +191,7 @@ class AppMenu:
         Parâmetros:
         - app_interface (ApplicationInterface): objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
         """
-        
+
         self.refresh = Refresh()
         self.list = List()
         self.app_interface = app_interface
@@ -203,7 +203,7 @@ class AppMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         while True:
             self.refresh.Fresh()
             print("\nMenu de Aplicativos:")
@@ -241,7 +241,7 @@ class ConfigAppMenu:
     Métodos:
     - DisplayMenu: mostra o menu de configuração de aplicativos do sistema
     """
-    
+
     def __init__(self, app_interface):
         """
         Construtor da classe ConfigAppMenu.
@@ -249,7 +249,7 @@ class ConfigAppMenu:
         Parâmetros:
         - app_interface (ApplicationInterface): objeto da classe ApplicationInterface representando a interface de aplicativos do sistema
         """
-        
+
         self.refresh = Refresh()
         self.list = List()
         self.app_interface = app_interface
@@ -261,7 +261,7 @@ class ConfigAppMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         while True:
             self.refresh.Fresh()
             print("\nConfigurações de Aplicativos:")
@@ -295,7 +295,7 @@ class ConfigAppMenu:
 
             elif choice == 3:
                 self.refresh.Fresh()
-                if self.app_interface.installed_apps: 
+                if self.app_interface.installed_apps:
                     self.list.InstalledApps(self.app_interface.installed_apps)
                     index = int(input("\nDigite o índice do aplicativo a ser iniciado: ")) - 1
                     self.app_interface.StartApplication(index)
@@ -339,7 +339,7 @@ class RepositoryMenu:
     - linuxOS: objeto da classe LinuxOperatingSystem representando o sistema operacional Linux
 
     Métodos:
-    - DisplayMenu: mostra o menu de repositórios do sistema    
+    - DisplayMenu: mostra o menu de repositórios do sistema
     """
 
     def __init__(self, linuxOS):
@@ -371,7 +371,7 @@ class RepositoryMenu:
             choice = int(input("Escolha uma opção: "))
 
             if choice == 1:
-                self.refresh.Fresh() 
+                self.refresh.Fresh()
                 for reponame in self.repositories:
                     reponame.ListPackages()
                 input("Pressione Enter para voltar ao menu...")
@@ -393,7 +393,7 @@ class RepositoryMenu:
                     else:
                         print("Opção inválida. Tente novamente.")
             elif choice == 3:
-                break  
+                break
             else:
                 print("Opção inválida. Tente novamente.")
 
@@ -407,7 +407,7 @@ class PackageMenu:
     Métodos:
     - DisplayMenu: mostra o menu de pacotes do sistema
     """
-    
+
     def __init__(self, reponame):
         """
         Construtor da classe PackageMenu.
@@ -415,7 +415,7 @@ class PackageMenu:
         Parâmetros:
         - reponame (Repository): objeto da classe Repository representando um repositório
         """
-        
+
         self.refresh = Refresh()
         self.reponame = reponame
 
@@ -426,7 +426,7 @@ class PackageMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         while True:
             self.refresh.Fresh()
             print(f"\nMenu de Pacotes do repositório '{self.reponame.reponame}':")
@@ -484,7 +484,7 @@ class PackageMenu:
                 return
             else:
                 print("Opção inválida. Tente novamente.")
-            
+
 
 class InfoMenu:
     """
@@ -498,7 +498,7 @@ class InfoMenu:
     Métodos:
     - DisplayMenu: mostra o menu de informações do sistema
     """
-    
+
     def __init__(self, hardware, server, architecture):
         """
         Construtor da classe InfoMenu.
@@ -508,7 +508,7 @@ class InfoMenu:
         - server (Server): objeto da classe Server representando o servidor do sistema
         - architecture (SoftwareArchitecture): objeto da classe SoftwareArchitecture representando a arquitetura de software do sistema
         """
-        
+
         self.refresh = Refresh()
         self.list = List()
         self.hardware = hardware
@@ -522,7 +522,7 @@ class InfoMenu:
         Parâmetros:
         - Nenhum.
         """
-        
+
         while True:
             self.refresh.Fresh()
             print("\nMenu de Informações:")
@@ -543,4 +543,3 @@ class InfoMenu:
                 break
             else:
                 print("Opção inválida. Tente novamente.")
-                

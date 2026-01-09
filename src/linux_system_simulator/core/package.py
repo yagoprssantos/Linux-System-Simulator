@@ -1,5 +1,5 @@
-from loading import LoadingAnimation
-from repository import Repository
+from linux_system_simulator.utils.loading import LoadingAnimation
+from linux_system_simulator.core.repository import Repository
 
 
 class Package(Repository):
@@ -16,7 +16,7 @@ class Package(Repository):
     - install(): Instala o pacote de software.
     - uninstall(): Desinstala o pacote de software.
     """
-    
+
     def __init__(self, reponame, address, packname, version):
         """
         Construtor da classe Package.
@@ -26,7 +26,7 @@ class Package(Repository):
         - packname (str): Nome do pacote de software.
         - version (str): Versão do pacote de software.
         """
-        
+
         super().__init__(reponame, address)
         self.reponame = reponame
         self.packname = packname
@@ -41,7 +41,7 @@ class Package(Repository):
         Parâmetros:
         - Nenhum.
         """
-        
+
         if not self.installed:
             print(f"Instalando {self.packname} (Versão: {self.version}) do repositório {self.reponame}", end='')
             LoadingAnimation(1)
@@ -54,17 +54,16 @@ class Package(Repository):
     def uninstall(self):
         """
         Desinstala o pacote de software
-        
+
         Parâmetros:
         - Nenhum.
         """
-        
+
         if self.installed:
             print(f"Desinstalando {self.packname} (Versão: {self.version}) do repositório {self.reponame}", end='')
             LoadingAnimation(1)
-            
+
             self.installed = False
             print(f"Pacote {self.packname} (Versão: {self.version}) do repositório {self.reponame} desinstalado.")
         else:
             print(f"Pacote {self.packname} (Versão: {self.version}) do repositório {self.reponame} não está instalado.")
-

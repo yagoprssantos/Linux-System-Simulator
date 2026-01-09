@@ -1,4 +1,4 @@
-from loading import LoadingAnimation
+from linux_system_simulator.utils.loading import LoadingAnimation
 
 
 class LinuxKernel:
@@ -13,7 +13,7 @@ class LinuxKernel:
     - InitializeKernel: inicializa o Kernel do Linux
     - ShutdownKernel: desliga o Kernel do Linux
     """
-    
+
     def __init__(self, version):
         """
         Construtor da classe LinuxKernel.
@@ -50,7 +50,7 @@ class LinuxKernel:
         print("Inicializando o Kernel Linux", end='')
         LoadingAnimation(1)
         print(f"Kernel Linux {self.version} inicializado com sucesso.")
-        
+
 
     def ShutdownKernel(self):
         """
@@ -63,7 +63,7 @@ class LinuxKernel:
         print("Desligando o Kernel Linux", end='')
         LoadingAnimation(1)
         print(f"Kernel Linux {self.version} desligado.")
-        
+
 
 
 class LinuxKernelAPI:
@@ -76,12 +76,11 @@ class LinuxKernelAPI:
     Métodos:
     - InteractWithKernel: interage com o Kernel do Linux
     """
-    
-    def InteractWithKernel(self): 
+
+    def InteractWithKernel(self):
         """
         Interage com o Kernel do Linux, simbolizando a interação de um programa com o Kernel do Linux.
         """
-        
+
         print("Interagindo com o Kernel do Linux", end='')
         LoadingAnimation(1)
-        

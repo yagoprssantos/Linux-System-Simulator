@@ -1,10 +1,10 @@
 import random
 
-from loading import LoadingAnimation
-from kernel import LinuxKernel
-from architecture import SoftwareArchitecture
-from package import Package
-from hardware import Hardware
+from linux_system_simulator.utils.loading import LoadingAnimation
+from linux_system_simulator.core.kernel import LinuxKernel
+from linux_system_simulator.core.architecture import SoftwareArchitecture
+from linux_system_simulator.core.package import Package
+from linux_system_simulator.core.hardware import Hardware
 
 
 class LinuxOperatingSystem:
@@ -24,7 +24,7 @@ class LinuxOperatingSystem:
     - StartSystem: inicia o sistema operacional Linux
     - ShutdownSystem: desliga o sistema operacional Linux
     """
-    
+
     def __init__(self, version, kernel, architecture, hardware):
         """
         Construtor da classe LinuxOperatingSystem.
@@ -41,7 +41,7 @@ class LinuxOperatingSystem:
         self.architecture = architecture
         self.hardware = hardware
         self.repositories = []
- 
+
 
     def DefaultRepo(self):
         """
@@ -50,8 +50,8 @@ class LinuxOperatingSystem:
         Parâmetros:
         - Nenhum.
         """
-    
-        from repository import Repository
+
+        from linux_system_simulator.core.repository import Repository
         repo_data = [
         ("Debian Repository 1", "http://debian-repo1.com"),
         ("Debian Repository 2", "http://debian-repo2.com"),
@@ -65,7 +65,7 @@ class LinuxOperatingSystem:
                 pack_version = round(random.uniform(1.0, 12.0), 1)
                 repo.repo_pack_list.append(Package(repo_name, repo_url, pack_name, pack_version))
             self.repositories.append(repo)
-            
+
 
     def InstallDistro(self, name, defaultRepo=None):
         """
@@ -79,7 +79,7 @@ class LinuxOperatingSystem:
         print(f"Instalando distribuição {name}", end='')
         LoadingAnimation(1)
         print()
-        
+
         if defaultRepo is None:
             defaultRepo = self.repositories
 
@@ -94,12 +94,12 @@ class LinuxOperatingSystem:
         Parâmetros:
         - Nenhum.
         """
-        
+
         print("Ligando o Sistema Linux", end='')
         LoadingAnimation(1)
         self.kernel.InitializeKernel()
         print("Sistema Linux ligado.")
-        
+
 
     def ShutdownSystem(self):
         """
@@ -113,4 +113,3 @@ class LinuxOperatingSystem:
         LoadingAnimation(1)
         self.kernel.ShutdownKernel()
         print("Sistema Linux desligado.")
-        
