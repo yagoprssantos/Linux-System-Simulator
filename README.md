@@ -1,44 +1,37 @@
 # Simulador do Sistema Operacional Linux
 
-![Banner](banner.png)
-
----
-
 ## Tabela de Conteúdos
 
-- [Descrição](#descrição)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Funcionalidades](#funcionalidades)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Contribuindo](#contribuindo)
+1. [Sobre o Projeto](#sobre-o-projeto)
+2. [Instalação](#instalação)
+3. [Como Usar](#como-usar)
+4. [Funcionalidades](#funcionalidades)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
 
-## Descrição
+## Sobre o Projeto
 
-O Simulador do Sistema Operacional Linux é uma ferramenta educacional abrangente que simula um ambiente Linux simplificado. Ele fornece aos usuários uma experiência prática em trabalhar com componentes de hardware, software e rede em um ambiente simulado e controlado.
-
-Se você é um aspirante a administrador de sistemas, desenvolvedor ou simplesmente curioso sobre como o Linux funciona, este simulador oferece uma maneira segura de explorar e experimentar vários aspectos de um sistema Linux.
+O Simulador do Sistema Operacional Linux é uma ferramenta educacional que oferece um ambiente Linux simplificado para aprendizado prático. Permite aos usuários explorar e interagir com componentes de hardware, software e rede de forma segura e controlada. Ideal para estudantes, desenvolvedores e entusiastas que desejam compreender o funcionamento básico de um sistema Linux sem riscos ao ambiente real.
 
 ## Instalação
 
-Para instalar o simulador, você precisa ter o Python 3.6 ou superior instalado em seu sistema. Você pode baixar o Python no site oficial: <https://www.python.org/downloads/>
+Certifique-se de ter Python 3.6 ou superior instalado: [python.org/downloads](https://www.python.org/downloads)
 
-Depois de ter o Python instalado, você pode baixar o código-fonte do simulador do repositório do GitHub:
+Clone o repositório e acesse a pasta do projeto:
 
 ```bash
 git clone https://github.com/yagoprssantos/Linux-System-Simulator.git
 cd Linux-System-Simulator
 ```
 
-## Uso
+## Como Usar
 
-Para executar o simulador, execute o seguinte comando na raiz do projeto:
+Execute o simulador a partir da raiz do projeto:
 
 ```bash
 python run.py
 ```
 
-Isso iniciará o simulador e exibirá o menu principal. A partir do menu principal, você pode escolher visualizar informações sobre o hardware, o servidor, a arquitetura de software ou os aplicativos instalados. Você também pode configurar os aplicativos instalados, instalando, desinstalando, iniciando, parando ou gerenciando permissões para eles.
+O menu principal será exibido, permitindo o acesso rápido às funções de simulação de hardware, gerenciamento de software, configuração de aplicativos e visualização de informações do sistema.
 
 ## Funcionalidades
 
@@ -53,41 +46,23 @@ Isso iniciará o simulador e exibirá o menu principal. A partir do menu princip
 ## Estrutura do Projeto
 
 ```
+
 Linux-System-Simulator/
 ├── src/
-│   ├── linux_system_simulator/
-│   │   ├── core/              # Componentes principais do sistema
-│   │   │   ├── __init__.py
-│   │   │   ├── application.py    # Classe Application
-│   │   │   ├── app_interface.py  # Interface de aplicativos
-│   │   │   ├── architecture.py   # Arquitetura de software
-│   │   │   ├── hardware.py       # Componentes de hardware
-│   │   │   ├── kernel.py         # Kernel Linux
-│   │   │   ├── linux_os.py       # Sistema operacional
-│   │   │   ├── machine.py        # Classe Machine
-│   │   │   ├── package.py        # Pacotes de software
-│   │   │   ├── repository.py     # Repositórios
-│   │   │   └── server.py         # Servidor
-│   │   ├── ui/                # Interface do usuário
-│   │   │   ├── __init__.py
-│   │   │   └── menus.py          # Menus interativos
-│   │   ├── utils/             # Utilitários
-│   │   │   ├── __init__.py
-│   │   │   ├── loading.py        # Animações de carregamento
-│   │   │   ├── refresh.py        # Limpeza de console
-│   │   │   └── list.py           # Listagens de informações
-│   │   └── __init__.py
-│   └── main.py               # Classe principal Output
-├── run.py                    # Ponto de entrada do programa
-├── setup.py                  # Configuração de instalação
-├── .gitignore               # Arquivos ignorados pelo git
-└── README.md                # Este arquivo
+│   └── linux_system_simulator/
+│       ├── core/    # Lógica principal: simulação do sistema, kernel, hardware, pacotes e repositórios
+│       ├── ui/      # Interface do usuário: menus e navegação
+│       └── utils/   # Utilitários: animações, limpeza de console, listagens
+├── run.py           # Executa o simulador
+├── setup.py         # Instalação e dependências
+├── .gitignore       # Exclusões do Git
+└── README.md        # Documentação do projeto
+
 ```
 
 ### Módulos Principais
 
 - **core/**: Contém toda a lógica de negócio e simulação do sistema
-
   - **linux_os.py**: Sistema operacional Linux simulado com funções de gerenciamento
   - **kernel.py**: API do kernel Linux e suas funcionalidades
   - **hardware.py**: Simulação de componentes de hardware (CPU, memória, armazenamento)
@@ -95,18 +70,11 @@ Linux-System-Simulator/
   - **package.py** e **repository.py**: Sistema de pacotes e repositórios
 
 - **ui/**: Interface do usuário e menus
-
   - **menus.py**: Menus interativos para navegação
 
 - **utils/**: Utilitários gerais
   - **loading.py**: Animações de carregamento
   - **refresh.py**: Funções de limpeza de console
   - **list.py**: Funções de listagem de informações
-
-## Contribuindo
-
-Se você deseja contribuir para o projeto, faça um fork do repositório e crie uma solicitação de pull. Certifique-se de seguir as convenções de codificação usadas no projeto e escrever testes para qualquer nova funcionalidade.
-
----
-
-**Aproveite sua jornada de simulação do Linux!**
+  - **list.py**: Funções de listagem de informações
+  - **list.py**: Funções de listagem de informações
